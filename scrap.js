@@ -1,15 +1,17 @@
 
-const ifCORS = (location.host === 'localhost') ? 'https://infinite-eyrie-11636.herokuapp.com/' : ''
+const proxy = (location.host.match(/(localhost|test)/g)) ? 'https://infinite-eyrie-11636.herokuapp.com/' : ''
+
+const fetchOptions = {
+  method: 'GET',
+  headers: {
+    'Access-Control-Allow-Origin': '*'
+  }
+}
 
 let scrap = {
   get: (url, callback) => {
-    fetch(ifCORS + url, {
-      method: 'GET',
-      headers: {
-        'Access-Control-Allow-Origin': '*'
-      }
-    })
     .then(function(response) {
+    fetch(proxy + url, fetchOptions)
       // Sucesso!
       return response.text()
     })
