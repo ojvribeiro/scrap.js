@@ -1,4 +1,5 @@
 # Scrap.js
+
 Web Scraping via client-side
 
 ----
@@ -11,7 +12,9 @@ Baixe o arquivo `scrap.js` e o inclua em seu HTML:
 <script src="scrap.js"></script>
 ```
 
-Chame o método `scrap.get` com os parâmetros `url` e `callback`:
+## scrap.get
+
+Chame o método `scrap.get` com os parâmetros `url` e `callback` para fazer a requisição do DOM de uma página da web:
 
 ```js
 scrap.get(url, callback)
@@ -38,5 +41,28 @@ scrap.get('https://bredi.com.br/', (res) => {
   })
 
   console.log(pageLinks)
+})
+```
+
+## scrap.getHTML
+
+O método `scrap.getHTML` captura um elemento específico de uma página da web. Ele recebe um parâmetro, que é o objeto com as opções do Scrap.
+
+Option     | Value
+-----------|-----------------------------------------------------------
+`url`      | Qualquer URL começando com `http://` ou `https://`
+`element`  | String com o seletor do elemento que você quer receber
+`callback` | Função a ser executada após o sucesso na requisição
+
+Exemplo:
+
+```js
+scrap.getHTML({
+  url: 'https://bredi.com.br/',
+  element: '#portfolio article',
+  callback: (res) => {
+    // Insere o resultado em um elemento dentro da sua página
+    document.querySelector('#app').innerHTML = res
+  }
 })
 ```
