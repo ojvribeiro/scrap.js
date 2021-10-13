@@ -40,7 +40,7 @@ scrap.get('https://bredi.com.br/', (res) => {
     pageImages.push(el.src)
   })
 
-  console.log(pageLinks)
+  console.log(pageImages)
 })
 ```
 
