@@ -10,12 +10,12 @@ const fetchOptions = {
 
 let scrap = {
   get: (url, callback) => {
-    .then(function(response) {
     fetch(proxy + url, fetchOptions)
+    .then((res) => {
       // Sucesso!
       return response.text()
     })
-    .then(function(html) {
+    .then((html) => {
       // Converte a string HTML em um objeto document
       let parser = new DOMParser()
       let doc = parser.parseFromString(html, 'text/html')
@@ -27,7 +27,7 @@ let scrap = {
         console.error('Você precisa definir uma função callback, amigo.');
       }
     })
-    .catch(function(err) {
+    .catch((err) => {
       // Erro
       console.error('Traz a cloropina pro pai. :(', err)
     })
