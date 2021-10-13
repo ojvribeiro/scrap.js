@@ -13,7 +13,7 @@ let scrap = {
     fetch(proxy + url, fetchOptions)
     .then((res) => {
       // Sucesso!
-      return response.text()
+      return res.text()
     })
     .then((html) => {
       // Converte a string HTML em um objeto document
