@@ -10,6 +10,8 @@ const fetchOptions = {
 
 let scrap = {
   get: (url, callback) => {
+    console.log('Buscando elemento...')
+
     fetch(proxy + url, fetchOptions)
     .then((res) => {
       // Sucesso!
@@ -19,19 +21,25 @@ let scrap = {
       // Converte a string HTML em um objeto document
       let parser = new DOMParser()
       let doc = parser.parseFromString(html, 'text/html')
-
+      
       if (callback !== undefined) {
+        // Sucesso na resposta!
+        console.log('Aí sim, meu patrão! :D')
+
         callback(doc)
       }
       else {
-        console.error('Você precisa definir uma função callback, amigo.');
+        // Exceção
+        console.error('Você precisa definir uma função callback. Aí você me quebra.');
       }
     })
     .catch((err) => {
       // Erro
       console.error('Traz a cloropina pro pai. :(', err)
     })
-  }
+  },
+
+
 
 
 
